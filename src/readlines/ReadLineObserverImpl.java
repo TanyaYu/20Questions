@@ -6,7 +6,6 @@ import java.util.logging.Logger;
 import gamestates.GameStateMachine;
 
 public class ReadLineObserverImpl implements ReadLineObserver {
-	private static final Logger LOGGER = Logger.getLogger(ReadLineObserverImpl.class.getName());
 
 	private GameStateMachine stateMachine;
 
@@ -36,7 +35,7 @@ public class ReadLineObserverImpl implements ReadLineObserver {
 		} else if (THINGS_CATEGORY.contains(line)) {
 			stateMachine.transitTo(new OnCategoryEvent(4));
 		} else {
-			LOGGER.warning("Unknown command " + line);
+			stateMachine.transitTo(new OnUnrecognizedCommandEvent());
 		}
 	}
 

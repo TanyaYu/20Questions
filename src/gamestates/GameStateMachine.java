@@ -5,7 +5,7 @@ import gameevents.GameEvent;
 
 public class GameStateMachine {
 
-	private static final Logger LOGGER = Logger.getLogger(GameStateMachine.class.getName());
+	//private static final Logger LOGGER = Logger.getLogger(GameStateMachine.class.getName());
 
 	private GameState currentState;
 	
@@ -20,7 +20,7 @@ public class GameStateMachine {
 			currentState = newState;
 			currentState.onEnter();
 		} else {
-			LOGGER.warning("Transition is not found for event " );
+			//LOGGER.warning("Transition is not found for event " );
 		}
 	}
 }

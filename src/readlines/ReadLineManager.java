@@ -7,8 +7,17 @@ import java.util.List;
 
 public class ReadLineManager {
 
+	private static ReadLineManager instance = null;
 	private List<ReadLineObserver> observers = new ArrayList();
 	private BufferedReader br;
+	
+	private ReadLineManager() { }
+	
+	public static ReadLineManager getInstance() {
+		if(instance == null) 
+			instance = new ReadLineManager();
+		return instance;
+	}
 
 	public void registerObserver(ReadLineObserver o) {
 		observers.add(o);

@@ -9,7 +9,7 @@ public class Game {
 
 	public static void main(String[] args) throws IOException {
 		GameStateMachine stateMachine = new GameStateMachine();
-		ReadLineManager rlm = new ReadLineManager();
+		ReadLineManager rlm = ReadLineManager.getInstance();
 		rlm.registerObserver(new ReadLineObserverImpl(stateMachine));
 		rlm.startReading();
 	}
