@@ -1,11 +1,6 @@
 package gamestates;
 
-import gameevents.GameEvent;
-import gameevents.OnCategoryEvent;
-import gameevents.OnNoEvent;
-import gameevents.OnStartCategoryEvent;
-import gameevents.OnStartEvent;
-import gameevents.OnYesEvent;
+import gameevents.*;
 
 public class ConfirmNewGameStartState implements GameState {
 

@@ -2,7 +2,6 @@ package readlines;
 
 import gameevents.*;
 import static game.Constants.*;
-import java.util.logging.Logger;
 import gamestates.GameStateMachine;
 
 public class ReadLineObserverImpl implements ReadLineObserver {

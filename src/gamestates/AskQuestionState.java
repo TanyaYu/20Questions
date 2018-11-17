@@ -22,7 +22,7 @@ public class AskQuestionState implements GameState {
 		}
 		if(questionNumber == 1) {
 			String category;
-			switch(categoryId) {
+			switch(categoryId) {	
 			case 1: category = "Food"; break;
 			case 2: category = "States"; break;
 			case 3: category = "Animals"; break;

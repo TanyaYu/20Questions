@@ -1,6 +1,5 @@
 package gamestates;
 import java.util.logging.Logger;
-
 import gameevents.GameEvent;
 
 public class GameStateMachine {
