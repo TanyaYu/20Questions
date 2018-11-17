@@ -41,6 +41,10 @@ public class AskQuestionState implements GameState {
 			int newCategoryId = ((OnStartCategoryEvent)event).getCategoryId();
 			return new ConfirmNewGameStartState(categoryId, questionNumber, newCategoryId);
 		}
+		
+		else if(event instanceof OnEndEvent) {
+			return new ConfirmEndGameState(categoryId, questionNumber);
+		}
 		return null;
 	}
 

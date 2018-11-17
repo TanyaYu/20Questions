@@ -21,6 +21,8 @@ public class ReadLineObserverImpl implements ReadLineObserver {
 			onStartLine(null);
 		} else if (START.equals(lines[0]) && lines.length > 1) {
 			onStartLine(lines[1]);
+		} else if (END.equals(line)) {
+			stateMachine.transitTo(new OnEndEvent());
 		} else if (YES.contains(line)) {
 			stateMachine.transitTo(new OnYesEvent());
 		} else if (NO.contains(line)) {
