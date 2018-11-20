@@ -87,6 +87,29 @@ public interface Constants {
 			
 			
 	};
-	
+
+	public final static String[] FOOD_QUESTIONS = {
+			"Is it a Vegitable?", 
+			"Is it a Fruit?",
+			"Is it high in Fat?",
+			"Is it High in Carbs?",
+			"Is it high in protein?",
+			"Is it spicy?",
+			"Is it italian?",
+			"Is it mexican?",
+			"Is it chineese?",
+			"Is it indian?",
+			"Is it refrigerated",
+			"Does it come frozen?",
+			"Is it served hot?",
+			"Is it served cold?",
+			"Is it high in sugar?",
+			"Does it come from an animal?",
+			"Does it come from plants?",
+			"Is it a seafood?",
+			"Is it a desert?",
+			"Does it have meat?"
+		};
+
 	
 }
