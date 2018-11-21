@@ -36,8 +36,7 @@ public class AskQuestionState implements GameState {
 			System.out.println("Selected category: " + category);
 		}
 		if(questionNumber >= 1 && questionNumber <= 20) {
-			String question = "...";
-			//database.getQuestion(categoryId, questionNumber);
+			String question = database.getQuestion(categoryId, questionNumber);
 			System.out.printf("Question %d: %s\n", questionNumber, question);
 		}
 	}
