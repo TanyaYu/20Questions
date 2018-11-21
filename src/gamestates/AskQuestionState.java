@@ -67,7 +67,14 @@ public class AskQuestionState implements GameState {
 			database.postAnswer(questionNumber, Answer.UNKNOWN);
 			if(questionNumber >= 20) return new GuessWordState();
 			else return new AskQuestionState(categoryId, questionNumber+1);
+		} else if(event instanceof OnUndoEvent) {
+			 if (questionNumber == 1) { 
+				return null;
+			}
+				else return new AskQuestionState(categoryId, questionNumber - 1);
+	
 		}
+		
 		return null;
 	}
 
