@@ -9,7 +9,6 @@ public class ConfirmEndGameState implements GameState {
 
 	private int categoryId;
 	private int questionNumber;
-	// private int newCategoryId;
 
 	public ConfirmEndGameState(int categoryId, int questionNumber) {
 		this.categoryId = categoryId;
@@ -28,7 +27,6 @@ public class ConfirmEndGameState implements GameState {
 			try {
 				ReadLineManager.getInstance().stopReading();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			return null;

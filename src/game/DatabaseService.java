@@ -1,24 +1,25 @@
 package game;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-
-import readlines.ReadLineManager;
-import readlines.ReadLineObserver;
+import answer.Answer;
 
 public class DatabaseService {
+	private String databaseName = "QuestionsDatabase";
+	private String userName = "root";
+	private String password = "admin";
+	private String connectionStirng = String.format("jdbc:mysql://localhost:3306/%s?serverTimezone=UTC&autoReconnect=true&useSSL=false", databaseName);
+	
 	private Connection connection;
 	private static DatabaseService instance = null;
+	private Answer[] answers = new Answer[20];
+	
 	private DatabaseService() { 
 		try {
-			Class.forName("com.mysql.jdbc.Driver");  
-			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/QuestionsDatabase", "root","password");
+			Class.forName("com.mysql.cj.jdbc.Driver");  
+			connection = DriverManager.getConnection(connectionStirng, userName, password);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -29,6 +30,13 @@ public class DatabaseService {
 		return instance;
 	}
 	
+	public void postAnswer(int questionNumber, Answer answer) {
+		answers[questionNumber-1] = answer;
+	}
+	
+	public void clearAnswers() {
+		answers = new Answer[20];
+	}
 	
 	public void testdata() {
 		Statement stmt;
