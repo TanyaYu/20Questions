@@ -45,4 +45,26 @@ public class DatabaseService {
 		}  
 	}
 	
+	public String getQuestion(int catagoryId, int questionNumber) {
+		
+		switch(catagoryId) {
+		case 1:
+			return Constants.FOOD_QUESTIONS[questionNumber - 1];
+		case 2:
+			return Constants.STATE_QUESTIONS[questionNumber - 1];
+		case 3:
+			return Constants.ANIMAL_QUESTIONS[questionNumber - 1];
+		case 4:
+			return Constants.THINGS_QUESTIONS[questionNumber - 1];
+			
+			
+		
+			
+			
+			
+		
+		}
+		return null;
+	}
+	
 }
