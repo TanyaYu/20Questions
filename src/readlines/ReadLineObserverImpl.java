@@ -27,6 +27,10 @@ public class ReadLineObserverImpl implements ReadLineObserver {
 			stateMachine.transitTo(new OnYesEvent());
 		} else if (NO.contains(line)) {
 			stateMachine.transitTo(new OnNoEvent());
+		} else if (SOMETIMES.contains(line)) {
+			stateMachine.transitTo(new OnSometimesEvent());
+		} else if (UNKNOWN.contains(line)) {
+			stateMachine.transitTo(new OnUnknownEvent());
 		} else if (FOOD_CATEGORY.contains(line)) {
 			stateMachine.transitTo(new OnCategoryEvent(1));
 		} else if (STATES_CATEGORY.contains(line)) {
@@ -35,6 +39,8 @@ public class ReadLineObserverImpl implements ReadLineObserver {
 			stateMachine.transitTo(new OnCategoryEvent(3));
 		} else if (THINGS_CATEGORY.contains(line)) {
 			stateMachine.transitTo(new OnCategoryEvent(4));
+		} else if (UNDO.contains(line)) {
+			stateMachine.transitTo(new OnUndoEvent());
 		} else {
 			stateMachine.transitTo(new OnUnrecognizedCommandEvent());
 		}
