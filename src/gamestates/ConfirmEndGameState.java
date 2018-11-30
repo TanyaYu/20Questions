@@ -12,8 +12,7 @@ public class ConfirmEndGameState implements GameState {
 
 	public ConfirmEndGameState(int categoryId, int questionNumber) {
 		this.categoryId = categoryId;
-		this.questionNumber = questionNumber;
-		
+		this.questionNumber = questionNumber;	
 	}
 
 	@Override
@@ -29,9 +28,9 @@ public class ConfirmEndGameState implements GameState {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			return null;
-			
-		} else if (event instanceof OnNoEvent) {
+			return null;	
+		} 
+		if (event instanceof OnNoEvent) {
 			return new AskQuestionState(categoryId, questionNumber);
 		}
 		printHelp();
@@ -41,5 +40,4 @@ public class ConfirmEndGameState implements GameState {
 	private void printHelp() {
 		System.out.println("Please type YES(Y) or NO(N)"); 
 	}
-
 }

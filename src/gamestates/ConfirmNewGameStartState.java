@@ -22,12 +22,10 @@ public class ConfirmNewGameStartState implements GameState {
 	@Override
 	public GameState transitionTo(GameEvent event) {
 		if (event instanceof OnYesEvent) {
-			if (newCategoryId == 0) {
-				return new SelectCategoryState();
-			} else {
-				return new AskQuestionState(newCategoryId, 1);
-			}
-		} else if (event instanceof OnNoEvent) {
+			if (newCategoryId == 0) return new SelectCategoryState();
+			return new AskQuestionState(newCategoryId, 1);
+		} 
+		if (event instanceof OnNoEvent) {
 			return new AskQuestionState(categoryId, questionNumber);
 		}
 		printHelp();

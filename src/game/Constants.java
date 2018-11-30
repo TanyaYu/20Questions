@@ -31,6 +31,7 @@ public interface Constants {
 			"Does it have a beak?",
 			"Does it have stripes?",
 			"Does it have scales?",
+			"Is it carnivorous?",
 			"Is it herbivorous?",
 			"Is it omnivorous?",
 			"Does it have feathers?",
