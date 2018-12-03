@@ -30,37 +30,35 @@ public interface Constants {
 			"Is it a domestic animal?",
 			"Does it have a beak?",
 			"Does it have stripes?",
-			"Does it have scales?",
-			"Is it carnivorous?",
-			"Is it herbivorous?",
-			"Is it omnivorous?",
+			"Can it fit in a backpack?",
+			"Does it eat meat or fish?",
+			"Does it eat plants?",
+			"Does it live in groups?",
 			"Does it have feathers?",
 			"Does it have horn?",
-			"Can it run fast?"
-			
-			
-	};
+			"Can it run fast?"						
+};
 	
 	public final static String[] THINGS_QUESTIONS =  {
 			"Is it used for cleaning?",
-			"Does it come in different colors?",
+			"Does it open?",
 			"Does it have a particular smell?",
-			"Is it expensive?",
+			"Does it cost more?",
 			"Can you write with it?",
 			"Can you write on it?",
 			"Does it require electricity to run?",
-			"Can it be used for storage?",
-			"Is it commonly found in every household?",
+			"Can you fit a rabbit inside of it?",
+			"Do you hold it when you use it?",
 			"Can it be played with?",
 			"Can it be used for travelling?",
-			"Does it come in different sizes?",
-			"Does is come in various shapes?",
-			"Is it a necessisty?",
-			"Is it edible?",
+			"Can it fit in a backpack?",
+			"Does it make noise?",
+			"Do most people use it daily?",
+			"Was it used 100 years ago?",
 			"Is it a part of school stationery?",
-			"Is it breakable?",
+			"Does it break if its dropped?",
 			"Does it run on batteries?",
-			"Is it used for educational purposes?",			
+			"Can you give it as a gift?",			
 	};
 	
 	public final static String[] STATE_QUESTIONS =  {
@@ -83,13 +81,8 @@ public interface Constants {
 			"Is it a popular tourist destination?",
 			"Is there alot of people that speak spanish there?",
 			"Does it get alot of rain?",
-			"Does it get Tornados?",
-			
-			
-			
-			
+			"Does it get Tornados?",						
 	};
-
 	public final static String[] FOOD_QUESTIONS = {
 			"Is it a Vegitable?", 
 			"Is it a Fruit?",
@@ -101,16 +94,16 @@ public interface Constants {
 			"Is it mexican?",
 			"Is it chineese?",
 			"Is it indian?",
-			"Is it refrigerated",
+			"Is there a case where it might need to be refrigerated?",
 			"Does it come frozen?",
 			"Is it served hot?",
-			"Is it served cold?",
-			"Is it high in sugar?",
+			"Is it a drink?",
+			"Is it sweet?",
 			"Does it come from an animal?",
-			"Does it come from plants?",
+			"Is it healthy?",
 			"Is it a seafood?",
-			"Is it a desert?",
-			"Does it have meat?"
+			"Can it be served as a dish?",
+			"Is it vegetarian?"
 		};
 
 	
