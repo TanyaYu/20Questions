@@ -43,7 +43,7 @@ public interface Constants {
 			"Is it used for cleaning?",
 			"Does it open?",
 			"Does it have a particular smell?",
-			"Does it cost more?",
+			"Does it cost more than $100?",
 			"Can you write with it?",
 			"Can you write on it?",
 			"Does it require electricity to run?",
@@ -56,9 +56,10 @@ public interface Constants {
 			"Do most people use it daily?",
 			"Was it used 100 years ago?",
 			"Is it a part of school stationery?",
-			"Does it break if its dropped?",
+			"Does it break if it's dropped?",
 			"Does it run on batteries?",
-			"Can you give it as a gift?",			
+			"Can you give it as a gift?",	
+			"Does it come in a box?"		
 	};
 	
 	public final static String[] STATE_QUESTIONS =  {
