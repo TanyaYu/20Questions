@@ -2,6 +2,7 @@ package gamestates;
 
 import game.DatabaseService;
 import gameevents.GameEvent;
+import gameevents.OnYesEvent;
 
 public class GuessWordState implements GameState {
 	private DatabaseService database = DatabaseService.getInstance();
@@ -20,6 +21,9 @@ public class GuessWordState implements GameState {
 
 	@Override
 	public GameState transitionTo(GameEvent event) {
+		if(event instanceof OnYesEvent) {
+			return new AskNewGameStartState();
+		}
 		return null;
 	}
 
