@@ -2,6 +2,7 @@ package gamestates;
 
 import game.DatabaseService;
 import gameevents.GameEvent;
+import gameevents.OnNoEvent;
 import gameevents.OnYesEvent;
 
 public class GuessWordState implements GameState {
@@ -23,6 +24,9 @@ public class GuessWordState implements GameState {
 	public GameState transitionTo(GameEvent event) {
 		if(event instanceof OnYesEvent) {
 			return new AskNewGameStartState();
+		}
+		if(event instanceof OnNoEvent) {
+			return new AskRightWordState(categoryId);
 		}
 		return null;
 	}
