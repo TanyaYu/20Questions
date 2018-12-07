@@ -79,15 +79,15 @@ public class DatabaseService {
 					+ " values = (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			break;
 		case 2:
-			query = " insert into StatesTable (animalname, Question_1, Question_2 , Question_3, Question_4, Question_5, Question_6, Question_7, Question_8, Question_9, Question_10, Question_11, Question_12, Question_13, Question_14, Question_15, Question_16, Question_17, Question_18, Question_19, Question_20)"
+			query = " insert into StatesTable (statename, Question_1, Question_2 , Question_3, Question_4, Question_5, Question_6, Question_7, Question_8, Question_9, Question_10, Question_11, Question_12, Question_13, Question_14, Question_15, Question_16, Question_17, Question_18, Question_19, Question_20)"
 					+ " values = (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			break;
 		case 3:
-			query = " insert into AnimalsTable (statename, Question_1, Question_2 , Question_3, Question_4, Question_5, Question_6, Question_7, Question_8, Question_9, Question_10, Question_11, Question_12, Question_13, Question_14, Question_15, Question_16, Question_17, Question_18, Question_19, Question_20)"
+			query = " insert into AnimalsTable (animalname, Question_1, Question_2 , Question_3, Question_4, Question_5, Question_6, Question_7, Question_8, Question_9, Question_10, Question_11, Question_12, Question_13, Question_14, Question_15, Question_16, Question_17, Question_18, Question_19, Question_20)"
 					+ " values = (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			break;
 		case 4:
-			query = " insert into ThingsTable (Things, Question_1, Question_2 , Question_3, Question_4, Question_5, Question_6, Question_7, Question_8, Question_9, Question_10, Question_11, Question_12, Question_13, Question_14, Question_15, Question_16, Question_17, Question_18, Question_19, Question_20)"
+			query = " insert into ThingsTable (ThingName, Question_1, Question_2 , Question_3, Question_4, Question_5, Question_6, Question_7, Question_8, Question_9, Question_10, Question_11, Question_12, Question_13, Question_14, Question_15, Question_16, Question_17, Question_18, Question_19, Question_20)"
 					+ " values = (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			break;
 		
@@ -97,6 +97,11 @@ public class DatabaseService {
 		
 		try {
 			PreparedStatement preparedStmt = connection.prepareStatement(query);
+			
+			// String checkwordQuery = 'Select' + OnUnrecoginizedCommandEvent.getCommand() + 'from' + 
+			
+			// if (OnUnrecognizedCommandEvent.getCommand() == )
+			
 			
 			preparedStmt.setString(1, actualAnswer);
 			int i = 2;
