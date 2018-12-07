@@ -2,6 +2,7 @@ package gamestates;
 
 import game.DatabaseService;
 import gameevents.GameEvent;
+import gameevents.OnHelpEvent;
 import gameevents.OnNoEvent;
 import gameevents.OnYesEvent;
 
@@ -28,7 +29,14 @@ public class GuessWordState implements GameState {
 		if(event instanceof OnNoEvent) {
 			return new AskRightWordState(categoryId);
 		}
+		if(event instanceof OnHelpEvent) {
+			printHelp();	
+		}
 		return null;
+	}
+	
+	private void printHelp() {
+		System.out.println("Please type YES(Y) or NO(N)"); 
 	}
 
 }

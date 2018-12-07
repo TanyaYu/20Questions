@@ -3,6 +3,7 @@ package gamestates;
 import java.io.IOException;
 
 import gameevents.GameEvent;
+import gameevents.OnHelpEvent;
 import gameevents.OnNoEvent;
 import gameevents.OnYesEvent;
 import readlines.ReadLineManager;
@@ -31,7 +32,10 @@ public class AskNewGameStartState implements GameState {
 			}
 			return null;
 		}
-		// TODO Auto-generated method stub
+		
+		if (event instanceof OnHelpEvent) {
+			System.out.println("Please type YES(Y) to start a new game and NO(N) to continue with the same game or to exit.");
+		}
 		return null;
 	}
 
