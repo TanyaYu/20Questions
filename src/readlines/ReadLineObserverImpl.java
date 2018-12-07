@@ -44,7 +44,7 @@ public class ReadLineObserverImpl implements ReadLineObserver {
 		} else if (HELP.contains(line)) {
 			stateMachine.transitTo(new OnHelpEvent());
 		}  else {
-			stateMachine.transitTo(new OnUnrecognizedCommandEvent());
+			stateMachine.transitTo(new OnUnrecognizedCommandEvent(line));
 		}
 	}
 
