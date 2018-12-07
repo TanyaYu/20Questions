@@ -2,11 +2,10 @@ package game;
 
 import java.sql.*;
 import answer.Answer;
-
 public class DatabaseService {	
 	private String databaseName = "QuestionsDatabase";
 	private String userName = "root";
-	private String password = "admin";
+	private String password = "password";
 	private String connectionStirng = String
 			.format("jdbc:mysql://localhost:3306/%s?serverTimezone=UTC&autoReconnect=true&useSSL=false", databaseName);
 
@@ -67,6 +66,54 @@ public class DatabaseService {
 			return Constants.THINGS_QUESTIONS[questionNumber - 1];
 		}
 		return null;
+	}
+	
+	
+	
+	public void insertCorrectAnswer(String actualAnswer, int categoryId) {
+		String query = " ";
+		
+		switch (categoryId) {
+		case 1:
+			query = " insert into FoodTable (foodname, Question_1, Question_2 , Question_3, Question_4, Question_5, Question_6, Question_7, Question_8, Question_9, Question_10, Question_11, Question_12, Question_13, Question_14, Question_15, Question_16, Question_17, Question_18, Question_19, Question_20)"
+					+ " values = (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			break;
+		case 2:
+			query = " insert into StatesTable (animalname, Question_1, Question_2 , Question_3, Question_4, Question_5, Question_6, Question_7, Question_8, Question_9, Question_10, Question_11, Question_12, Question_13, Question_14, Question_15, Question_16, Question_17, Question_18, Question_19, Question_20)"
+					+ " values = (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			break;
+		case 3:
+			query = " insert into AnimalsTable (statename, Question_1, Question_2 , Question_3, Question_4, Question_5, Question_6, Question_7, Question_8, Question_9, Question_10, Question_11, Question_12, Question_13, Question_14, Question_15, Question_16, Question_17, Question_18, Question_19, Question_20)"
+					+ " values = (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			break;
+		case 4:
+			query = " insert into ThingsTable (Things, Question_1, Question_2 , Question_3, Question_4, Question_5, Question_6, Question_7, Question_8, Question_9, Question_10, Question_11, Question_12, Question_13, Question_14, Question_15, Question_16, Question_17, Question_18, Question_19, Question_20)"
+					+ " values = (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			break;
+		
+		}	
+		
+		
+		
+		try {
+			PreparedStatement preparedStmt = connection.prepareStatement(query);
+			
+			preparedStmt.setString(1, actualAnswer);
+			int i = 2;
+			
+			for (Answer x: answers) {
+				preparedStmt.setString(i, x.getChar());
+				i = i + 1;
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
 	}
 
 	public String guessWord(int categoryId) {
