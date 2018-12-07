@@ -19,7 +19,9 @@ public class SelectCategoryState implements GameState {
 			int categoryId = ((OnStartCategoryEvent)event).getCategoryId();
 			return new AskQuestionState(categoryId, 1);
 		}
-		printCategoriesHelp();
+		if(event instanceof OnHelpEvent) {
+			printCategoriesHelp();	
+		}	
 		return null;
 	}
 	

@@ -28,7 +28,9 @@ public class ConfirmNewGameStartState implements GameState {
 		if (event instanceof OnNoEvent) {
 			return new AskQuestionState(categoryId, questionNumber);
 		}
-		printHelp();
+		if(event instanceof OnHelpEvent) {
+			printHelp();	
+		}
 		return null;
 	}
 	

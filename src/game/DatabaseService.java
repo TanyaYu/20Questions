@@ -154,7 +154,7 @@ public class DatabaseService {
 				query = String.format("select animalname, %s as match_percent from animalstable", matchPercent);
 				break;
 			case 4:
-				query = String.format("select ThingName, %s as match_percent from thingsquestions", matchPercent);
+				query = String.format("select ThingName, %s as match_percent from thingstable", matchPercent);
 				break;
 			}
 			query += " order by match_percent desc";

@@ -1,5 +1,6 @@
 package gamestates;
 
+import game.DatabaseService;
 import gameevents.GameEvent;
 import gameevents.OnUnrecognizedCommandEvent;
 
