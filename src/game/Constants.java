@@ -10,7 +10,6 @@ public interface Constants {
 	public final static List<String> THINGS_CATEGORY = asList("things", "4");
 	public final static String START = "start";
 	public final static String END = "end";
-	public final static String HELP = "help";
 	public final static List<String> YES = asList("yes", "y");
 	public final static List<String> NO = asList("no", "n");
 	public final static List<String> SOMETIMES = asList("sometimes", "s");
