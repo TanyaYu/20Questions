@@ -35,9 +35,10 @@ public class ConfirmEndGameState implements GameState {
 		}
 		printHelp();
 		return null;
+		
 	}
 	
 	private void printHelp() {
-		System.out.println("Please type YES(Y) or NO(N)"); 
+		System.out.println("Please type YES(Y), to confirm that you want to END the game"); 
 	}
 }
