@@ -87,7 +87,7 @@ public class AskQuestionState implements GameState {
 			return new AskQuestionState(categoryId, questionNumber - 1);
 		}
 		if (event instanceof OnHelpEvent) {
-			System.out.println("Please type YES(Y), NO(N), SOMETIMES(S) OR UNKNOWN(U) to answer the questions")
+			System.out.println("Please type YES(Y), NO(N), SOMETIMES(S) OR UNKNOWN(U) to answer the questions");
 		}
 		
 
