@@ -15,6 +15,7 @@ public interface Constants {
 	public final static List<String> SOMETIMES = asList("sometimes", "s");
 	public final static List<String> UNKNOWN = asList("unknown", "u");
 	public final static String UNDO = "undo";
+	public final static List<String> HELP = asList("help", "h");
 	
 	public final static String[] ANIMAL_QUESTIONS =  {
 			"Does it have four limbs?",
