@@ -21,10 +21,11 @@ public class AskRightWordState implements GameState {
 		if(event instanceof OnUnrecognizedCommandEvent) {
 			return new AskNewGameStartState();
 		}
-		return null;
+		
 		if (event instanceof OnHelpEvent) {
-			System.out.println("Please enter the word that you are thinking.")
+			System.out.println("Please enter the word that you are thinking.");
 		}
 	}
+	return null;
 
 }
