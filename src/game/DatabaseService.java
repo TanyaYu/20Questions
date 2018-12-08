@@ -1,7 +1,6 @@
 package game;
 
 import java.sql.*;
-import answer.Answer;
 public class DatabaseService {	
 	private String databaseName = "QuestionsDatabase";
 	private String userName = "root";
@@ -120,60 +119,32 @@ public class DatabaseService {
 		Statement stmt;
 		try {
 			stmt = connection.createStatement();
-			String matchPercent = "(";
-			for (int i = 0; i < answers.length; i++) {
-				Answer a = answers[i];
-				String symbol = "";
-				switch (a) {
-				case YES:
-					symbol = "Y";
-					break;
-				case NO:
-					symbol = "N";
-					break;
-				case UNKNOWN:
-					symbol = "U";
-					break;
-				case SOMETIMES:
-					symbol = "S";
-					break;
-				}
-				matchPercent += String.format("GetWordPoint(Question_%d, '%s') + ", i + 1, symbol);
-			}
-			matchPercent += "0)/" + answers.length;
-			String query = "";
-
-			switch (categoryId) {
-			case 1:
-				query = String.format("select foodname, %s as match_percent from foodtable", matchPercent);
-				break;
-			case 2:
-				query = String.format("select statename, %s as match_percent from statestable", matchPercent);
-				break;
-			case 3:
-				query = String.format("select animalname, %s as match_percent from animalstable", matchPercent);
-				break;
-			case 4:
-				query = String.format("select ThingName, %s as match_percent from thingstable", matchPercent);
-				break;
-			}
-			query += " order by match_percent desc";
-
+			String query = getGuessWordQuery(Category.getById(categoryId));
 			ResultSet rs = stmt.executeQuery(query);
-			String word = "";
-			String topThree = "";
-			for (int i = 0; i < 3; i++) {
-				if (rs.next()) {
-					if(i == 0) word = rs.getString(1);
-					topThree += rs.getString(1) + "  " + rs.getDouble(2) * 100 + "%\n";
-				}
+			String word = null;
+			while (rs.next()) {
+				if (word == null)
+					word = rs.getString(1);
+				System.out.println(rs.getString(1) + "  " + rs.getDouble(2) * 100 + "%");
 			}
-			System.out.println(topThree);
 			connection.close();
 			return word;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	private String getGuessWordQuery(Category category) {
+		String matchPercent = "(";
+		for (int i = 0; i < answers.length; i++) {
+			String symbol = answers[i].getChar();
+			matchPercent += String.format("GetWordPoint(Question_%d, '%s') + ", i + 1, symbol);
+		}
+		matchPercent += "0)/" + answers.length;
+		return String.format("select %s, %s as match_percent from %s order by match_percent desc limit 3", 
+				category.getWordColumnName(),
+				matchPercent,
+				category.getTableName());
 	}
 }

@@ -2,7 +2,8 @@ package gamestates;
 
 import java.util.logging.Logger;
 
-import answer.Answer;
+import game.Answer;
+import game.Category;
 import game.DatabaseService;
 import gameevents.*;
 
@@ -25,24 +26,8 @@ public class AskQuestionState implements GameState {
 		}
 		if (questionNumber == 1) {
 			database.clearAnswers();
-			String category;
-			switch (categoryId) {
-			case 1:
-				category = "Food";
-				break;
-			case 2:
-				category = "States";
-				break;
-			case 3:
-				category = "Animals";
-				break;
-			case 4:
-				category = "Things";
-				break;
-			default:
-				category = "";
-			}
-			System.out.println("Selected category: " + category);
+			Category category = Category.getById(categoryId);
+			System.out.println("Selected category: " + category.getName());
 		}
 		if (questionNumber >= 1 && questionNumber <= 20) {
 			String question = database.getQuestion(categoryId, questionNumber);

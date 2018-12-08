@@ -1,4 +1,4 @@
-package answer;
+package game;
 
 public enum Answer {
 	YES("Y"), NO("N"), SOMETIMES("S"), UNKNOWN("U");
