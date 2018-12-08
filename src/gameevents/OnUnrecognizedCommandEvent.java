@@ -8,7 +8,9 @@ public class OnUnrecognizedCommandEvent extends GameEvent {
 		this.command = command;
 	}
 	
+
 	public String getCommand() {
+
 		return command;
 	}
 }
