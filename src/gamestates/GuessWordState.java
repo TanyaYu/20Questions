@@ -2,6 +2,7 @@ package gamestates;
 
 import game.DatabaseService;
 import gameevents.GameEvent;
+import gameevents.OnEndEvent;
 import gameevents.OnHelpEvent;
 import gameevents.OnNoEvent;
 import gameevents.OnYesEvent;

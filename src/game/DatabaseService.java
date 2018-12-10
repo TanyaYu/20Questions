@@ -4,7 +4,7 @@ import java.sql.*;
 public class DatabaseService {	
 	private String databaseName = "QuestionsDatabase";
 	private String userName = "root";
-	private String password = "password";
+	private String password = "admin";
 	private String connectionStirng = String
 			.format("jdbc:mysql://localhost:3306/%s?serverTimezone=UTC&autoReconnect=true&useSSL=false", databaseName);
 

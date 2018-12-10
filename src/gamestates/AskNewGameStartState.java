@@ -3,6 +3,7 @@ package gamestates;
 import java.io.IOException;
 
 import gameevents.GameEvent;
+import gameevents.OnEndEvent;
 import gameevents.OnHelpEvent;
 import gameevents.OnNoEvent;
 import gameevents.OnYesEvent;

@@ -13,6 +13,7 @@ public class Game {
 		rlm.registerObserver(new ReadLineObserverImpl(stateMachine));
 		rlm.startReading();
 		DatabaseService.getInstance().closeConnection();
+		System.out.println("Goodbye");
 	}
 	
 }

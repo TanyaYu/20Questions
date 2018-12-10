@@ -31,6 +31,9 @@ public class ConfirmNewGameStartState implements GameState {
 		if(event instanceof OnHelpEvent) {
 			printHelp();	
 		}
+		if (event instanceof OnEndEvent) {
+			return new ConfirmEndGameState(categoryId, questionNumber);
+		}
 		return null;
 	}
 	

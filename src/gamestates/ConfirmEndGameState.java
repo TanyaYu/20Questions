@@ -33,7 +33,9 @@ public class ConfirmEndGameState implements GameState {
 		if (event instanceof OnNoEvent) {
 			return new AskQuestionState(categoryId, questionNumber);
 		}
-		printHelp();
+		if (event instanceof OnEndEvent) {
+			return new ConfirmEndGameState(categoryId, questionNumber);
+		}
 		return null;
 		
 	}

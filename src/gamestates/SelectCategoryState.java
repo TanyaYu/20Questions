@@ -21,7 +21,7 @@ public class SelectCategoryState implements GameState {
 		}
 		if(event instanceof OnHelpEvent) {
 			printCategoriesHelp();	
-		}	
+		}
 		return null;
 	}
 	

@@ -2,6 +2,7 @@ package gamestates;
 
 import game.DatabaseService;
 import gameevents.GameEvent;
+import gameevents.OnEndEvent;
 import gameevents.OnHelpEvent;
 import gameevents.OnUnrecognizedCommandEvent;
 
@@ -15,6 +16,7 @@ public class AskRightWordState implements GameState {
 
 	@Override
 	public void onEnter() {
+		System.out.println("YOU WON! Congratulations!");
 		System.out.println("What was the word you were thinking about?");
 	}
 
