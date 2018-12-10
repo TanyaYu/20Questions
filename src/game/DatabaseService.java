@@ -4,7 +4,7 @@ import java.sql.*;
 public class DatabaseService {	
 	private String databaseName = "QuestionsDatabase";
 	private String userName = "root";
-	private String password = "password";
+	private String password = "admin";
 	private String connectionStirng = String
 			.format("jdbc:mysql://localhost:3306/%s?serverTimezone=UTC&autoReconnect=true&useSSL=false", databaseName);
 
@@ -37,39 +37,21 @@ public class DatabaseService {
 		answers = new Answer[20];
 	}
 
-	public void testdata() {
-		Statement stmt;
-		try {
-			stmt = connection.createStatement();
-
-			ResultSet rs = stmt.executeQuery("select * from StatesTable");
-			while (rs.next())
-				System.out.println(rs.getString(1) + "  " + rs.getString(2) + "  " + rs.getString(3));
-			connection.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
 	public String getQuestion(int catagoryId, int questionNumber) {
-
-		switch (catagoryId) {
-		case 1:
-			return Constants.FOOD_QUESTIONS[questionNumber - 1];
-		case 2:
-			return Constants.STATE_QUESTIONS[questionNumber - 1];
-		case 3:
-			return Constants.ANIMAL_QUESTIONS[questionNumber - 1];
-		case 4:
-			return Constants.THINGS_QUESTIONS[questionNumber - 1];
-		}
-		return null;
+		String[] questions = Category.getById(catagoryId).getQuestions();
+		return questions[questionNumber - 1];
 	}
 	
+	public void updateAnswers(String answer, int categoryId) {
+		Category category = Category.getById(categoryId);
+		if(wordExsists(category, answer)) {
+			updateWord(answer, category);
+		} else {
+			insertWord(answer, categoryId);
+		}
+	}
 	
-	
-	public void insertCorrectAnswer(String actualAnswer, int categoryId) {
+	private void insertWord(String actualAnswer, int categoryId) {
 		String query = " ";
 		
 		switch (categoryId) {
@@ -111,6 +93,8 @@ public class DatabaseService {
 			}
 			
 			
+			
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -119,12 +103,47 @@ public class DatabaseService {
 		
 		
 	}
+	
+	private void updateWord(String word, Category category) {
+		String query = getUpdateWordQuery(category.getTableName(), category.getWordColumnName());
+		try {
+			PreparedStatement preparedStmt = connection.prepareStatement(query);			
+			int i = 1;			
+			for (Answer x: answers) {
+				preparedStmt.setString(i, x.getChar());
+				i++;
+			}
+			preparedStmt.setString(i, word);			
+			preparedStmt.execute();	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
+	public boolean wordExsists(Category category, String word) {
+		try {
+			String query = getWordExistsQuery(category.getTableName(), category.getWordColumnName());
+			PreparedStatement preparedStmt = connection.prepareStatement(query);
+			preparedStmt.setString(1, word.toLowerCase());	
+			ResultSet rs = preparedStmt.executeQuery();
+			boolean result = rs.next();
+			return result;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	private String getWordExistsQuery(String tableName, String wordColumnName) {
+		return String.format("select %s from %s where lower(%s) = ?", wordColumnName, tableName, wordColumnName);
+	}
+	
 	public String guessWord(int categoryId) {
 		Statement stmt;
 		try {
 			stmt = connection.createStatement();
-			String query = getGuessWordQuery(Category.getById(categoryId));
+			Category category = Category.getById(categoryId);
+			String query = getGuessWordQuery(category.getTableName(), category.getWordColumnName());
 			ResultSet rs = stmt.executeQuery(query);
 			String word = null;
 			while (rs.next()) {
@@ -132,7 +151,6 @@ public class DatabaseService {
 					word = rs.getString(1);
 				System.out.println(rs.getString(1) + "  " + rs.getDouble(2) * 100 + "%");
 			}
-			connection.close();
 			return word;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -140,7 +158,7 @@ public class DatabaseService {
 		}
 	}
 	
-	private String getGuessWordQuery(Category category) {
+	private String getGuessWordQuery(String tableName, String wordColumntName) {
 		String matchPercent = "(";
 		for (int i = 0; i < answers.length; i++) {
 			String symbol = answers[i].getChar();
@@ -148,8 +166,25 @@ public class DatabaseService {
 		}
 		matchPercent += "0)/" + answers.length;
 		return String.format("select %s, %s as match_percent from %s order by match_percent desc limit 3", 
-				category.getWordColumnName(),
+				wordColumntName,
 				matchPercent,
-				category.getTableName());
+				tableName);
+	}
+	
+	private String getUpdateWordQuery(String tableName, String wordColumntName) {
+		String columns = "";
+		for(int i = 1; i<=20; i++) {
+			columns += String.format("Question_%d = ?", i);
+			if(i < 20) columns += ", ";
+		}
+		return String.format("update %s set %s where lower(%s) = ?", tableName, columns, wordColumntName);
+	}
+	
+	public void closeConnection() {
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

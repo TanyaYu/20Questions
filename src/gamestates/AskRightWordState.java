@@ -21,6 +21,8 @@ public class AskRightWordState implements GameState {
 	@Override
 	public GameState transitionTo(GameEvent event) {
 		if(event instanceof OnUnrecognizedCommandEvent) {
+			String answer = ((OnUnrecognizedCommandEvent) event).getCommand();
+			DatabaseService.getInstance().updateAnswers(answer, categoryId);
 			return new AskNewGameStartState();
 		}
 		if (event instanceof OnHelpEvent) {
