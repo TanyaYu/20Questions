@@ -32,7 +32,6 @@ public class AskNewGameStartState implements GameState {
 			}
 			return null;
 		}
-		
 		if (event instanceof OnHelpEvent) {
 			System.out.println("Please type YES(Y) to start a new game and NO(N) to continue with the same game or to exit.");
 		}
